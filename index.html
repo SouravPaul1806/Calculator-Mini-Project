@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator - Mini Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+    .calculator {
+      border: 2px solid #050505;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #00d6e1;
+    }
+    .calculator input[type="button"] {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      border: 1px solid #050505;
+      border-radius: 5px;
+    }
+    .calculator input[type="text"] {
+      width: 240px;
+      height: 50px;
+      font-size: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: right;
+      padding-right: 10px;
+      background-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="result">
+    <br>
+    <input type="button" value="7" onclick="appendValue('7')">
+    <input type="button" value="8" onclick="appendValue('8')">
+    <input type="button" value="9" onclick="appendValue('9')">
+    <input type="button" value="/" onclick="appendValue('/')">
+    <br>
+    <input type="button" value="4" onclick="appendValue('4')">
+    <input type="button" value="5" onclick="appendValue('5')">
+    <input type="button" value="6" onclick="appendValue('6')">
+    <input type="button" value="*" onclick="appendValue('*')">
+    <br>
+    <input type="button" value="1" onclick="appendValue('1')">
+    <input type="button" value="2" onclick="appendValue('2')">
+    <input type="button" value="3" onclick="appendValue('3')">
+    <input type="button" value="-" onclick="appendValue('-')">
+    <br>
+    <input type="button" value="C" onclick="clearResult()">
+    <input type="button" value="0" onclick="appendValue('0')">
+    <input type="button" style="background-color: rgb(255, 123, 0)" value="=" onclick="calculate()">
+    <input type="button" value="+" onclick="appendValue('+')">
+  </div>
+  <script>
+    function appendValue(value) {
+      document.getElementById('result').value += value;
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+
+    function calculate() {
+      var result = document.getElementById('result').value;
+      if (result) {
+        try {
+          document.getElementById('result').value = eval(result);
+        } catch (error) {
+          document.getElementById('result').value = 'Error';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
